@@ -1,0 +1,178 @@
+{
+  "model": {
+    "dimensions": {
+      "administrative-classification": {
+        "dimensionType": "classification",
+        "primaryKey": [
+          "Organisationseinheit"
+        ],
+        "attributes": {
+          "Organisationseinheit": {
+            "source": "Organisationseinheit",
+            "title": "Organisationseinheit"
+          }
+        },
+        "classificationType": "administrative"
+      },
+      "functional-classification": {
+        "dimensionType": "classification",
+        "primaryKey": [
+          "Produkt",
+          "Teilprodukt",
+          "Kostenartengruppe"
+        ],
+        "attributes": {
+          "Produkt": {
+            "source": "Produkt",
+            "title": "Produkt"
+          },
+          "Teilprodukt": {
+            "source": "Teilprodukt",
+            "title": "Teilprodukt"
+          },
+          "Kostenartengruppe": {
+            "source": "Kostenartengruppe",
+            "title": "Kostenartengruppe"
+          }
+        },
+        "classificationType": "functional"
+      },
+      "direction": {
+        "dimensionType": "other",
+        "primaryKey": [
+          "Aufwand_Ertrag"
+        ],
+        "attributes": {
+          "Aufwand_Ertrag": {
+            "source": "Aufwand/Ertrag",
+            "title": "Aufwand/Ertrag"
+          }
+        }
+      },
+      "date": {
+        "dimensionType": "datetime",
+        "primaryKey": [
+          "date"
+        ],
+        "attributes": {
+          "date": {
+            "source": "date",
+            "title": "date"
+          }
+        }
+      }
+    },
+    "measures": {
+      "amount": {
+        "source": "amount",
+        "title": "amount",
+        "currency": "EUR",
+        "direction": "revenue",
+        "phase": "executed"
+      }
+    }
+  },
+  "promise": {},
+  "regionCode": "eu",
+  "countryCode": "DE",
+  "cityCode": "Osnabrück",
+  "fiscalPeriod": {
+    "start": "2014-01-01",
+    "end": "2017-12-31"
+  },
+  "title": "Haushalt Stadt Osnabrück 2014-2017",
+  "name": "haushalt_stadt_osnabrueck_2014-2017",
+  "resources": [
+    {
+      "name": "haushalt_2014-17_clean",
+      "format": "csv",
+      "path": "haushalt_2014-17_clean.csv",
+      "mediatype": "text/csv",
+      "bytes": 2441891,
+      "dialect": {
+        "csvddfVersion": 1,
+        "delimiter": ",",
+        "lineTerminator": "\n"
+      },
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {
+            "title": "Organisationseinheit",
+            "name": "Organisationseinheit",
+            "slug": "Organisationseinheit",
+            "type": "string",
+            "format": "default",
+            "osType": "administrative-classification:generic:code",
+            "conceptType": "administrative-classification"
+          },
+          {
+            "title": "Produkt",
+            "name": "Produkt",
+            "slug": "Produkt",
+            "type": "string",
+            "format": "default",
+            "osType": "functional-classification:generic:level1:description",
+            "conceptType": "functional-classification"
+          },
+          {
+            "title": "Teilprodukt",
+            "name": "Teilprodukt",
+            "slug": "Teilprodukt",
+            "type": "string",
+            "format": "default",
+            "osType": "functional-classification:generic:level2:description",
+            "conceptType": "functional-classification"
+          },
+          {
+            "title": "Aufwand/Ertrag",
+            "name": "Aufwand/Ertrag",
+            "slug": "Aufwand_Ertrag",
+            "type": "string",
+            "format": "default",
+            "osType": "direction",
+            "conceptType": "direction"
+          },
+          {
+            "title": "Kostenartengruppe",
+            "name": "Kostenartengruppe",
+            "slug": "Kostenartengruppe",
+            "type": "string",
+            "format": "default",
+            "osType": "functional-classification:generic:level3:description",
+            "conceptType": "functional-classification"
+          },
+          {
+            "title": "date",
+            "name": "date",
+            "slug": "date",
+            "type": "integer",
+            "format": "default",
+            "osType": "date:fiscal-year",
+            "conceptType": "date"
+          },
+          {
+            "title": "amount",
+            "name": "amount",
+            "slug": "amount",
+            "type": "number",
+            "format": "default",
+            "osType": "value",
+            "conceptType": "value",
+            "decimalChar": ".",
+            "groupChar": ","
+          }
+        ],
+        "primaryKey": [
+          "Organisationseinheit",
+          "Aufwand/Ertrag",
+          "date"
+        ]
+      }
+    }
+  ],
+  "@context": "http://schemas.frictionlessdata.io/fiscal-data-package.jsonld",
+  "owner": "164fed8a23abe56bb2f6d1a9cc53536a",
+  "author": "Rüdiger Busche <fruedy123@gmail.com>",
+  "count_of_rows": 18654
+}
